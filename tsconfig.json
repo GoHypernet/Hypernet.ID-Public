@@ -5,5 +5,8 @@
     {
       "path": "packages/web-integration"
     },
+    {
+      "path": "packages/objects"
+    },
   ],
 }
