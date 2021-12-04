@@ -1,12 +1,12 @@
 {
-  "extends": "./tsconfig.build.json",
-  "files": [],
-  "references": [
-    {
-      "path": "packages/web-integration"
-    },
-    {
-      "path": "packages/objects"
-    },
-  ],
+	"extends": "./tsconfig.build.json",
+	"files": [],
+	"references": [
+		{
+			"path": "packages/web-integration"
+		},
+		{
+			"path": "packages/objects"
+		}
+	]
 }
