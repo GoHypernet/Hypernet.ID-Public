@@ -23,9 +23,8 @@
 		"jsx": "react",
 		"composite": true,
 		"paths": {
-			"@web-integration/*": [
-				"./*"
-			],
+			"@objects/*": ["./*"],
+			"@web-integration/*": ["./*"]
 		}
 	}
 }
