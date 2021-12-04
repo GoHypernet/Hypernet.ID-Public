@@ -23,12 +23,8 @@
 		"jsx": "react",
 		"composite": true,
 		"paths": {
-			"@objects/*": [
-				"./*"
-			],
-			"@web-integration/*": [
-				"./*"
-			],
+			"@objects/*": ["./*"],
+			"@web-integration/*": ["./*"]
 		}
 	}
 }
