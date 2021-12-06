@@ -6,7 +6,7 @@ it indicates the user has met certain identity check criteria.
 
 Currently, the Hypernet.ID smart contracts are only deployed to the Rinkeby Testnet, therefor only smart contracts
 on that network can directly query a user's verification status. As Hypernet.ID deploys to other EVM-compatible 
-blockchains, this package will detail how to use this smart contract library's modifiers to protect your protocols
+blockchains, this package will detail how to use this smart contract library's modifiers to protect your protocol's
 public and external functions. 
 
 ## Hypernet.ID Registry Chain Addresses
