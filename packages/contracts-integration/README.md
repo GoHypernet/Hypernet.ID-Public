@@ -1,15 +1,5 @@
-# Basic Sample Hardhat Project
+# Smart Contract Integration
 
-This project demonstrates a basic Hardhat use case. It comes with a sample contract, a test for that contract, a sample script that deploys that contract, and an example of a task implementation, which simply lists the available accounts.
-
-Try running some of the following tasks:
-
-```shell
-npx hardhat accounts
-npx hardhat compile
-npx hardhat clean
-npx hardhat test
-npx hardhat node
-node scripts/sample-script.js
-npx hardhat help
-```
+Hypernet.ID mints Non-Fungible Token assets directly to a user's account on the blockchain. This package allows 
+protocol developers to gate access to their protocol by requiring that an account own a Hypernet.ID NFT and that 
+it indicates the user has met certain identity check criteria. 
