@@ -10,10 +10,10 @@ web3 identity platform.
 ## Contents
 
 ### [Smart Contracts Integration](/packages/contracts-integration)
-Subpackage for integrating with Hypernet.ID protocol in smart contract protocols. 
+A solidity library for protecting external and public functions defined in smart contract protocols. 
 
 ### [Developer Documentation](/packages/developer-docs)
-Subpackage for Gitbook developer documentation hosting. 
+Subpackage thats serves as the starting point for Gitbook hosted developer documentation.
 
 ### [Web Integration](/packages/web-integration)
 Subpackage with typescript utilities for easy integration with Hypernet.ID in web-based applications.
