@@ -12,13 +12,11 @@ Hypernet.ID NFT, you will not have to go through the identity and KYC verificati
 may interact with multiple dApps that each leverage your Hypernet.ID NFT to verify your status, rather than 
 asking you to complete the same checks for each dApp.
 
-As a developer, there are two primary ways to integrate Hypernet.ID into your dApp: in your dApp's UI and in your 
+There are two primary ways to integrate Hypernet.ID into your dApp: in your dApp's web-based UI and in your 
 smart contract protocol itelf. 
 
-## [UI integration package](/packages/web-integration)
-
+## [Web Integration](/packages/web-integration)
 A lightweight typscript package for interacting with the Hypernet.ID service in your web-based application.
 
 ## [Smart Contract Integration](/packages/contracts-integration)
-
-A minimilist smart contract library for enforcing identiy verification at the protocol level. 
+A minimilist smart contract library for enforcing identity verification at the protocol level. 
