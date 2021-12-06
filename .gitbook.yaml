@@ -1,0 +1,5 @@
+root: ./packages/developer-docs
+
+# structure:
+#   readme: index.md
+#   summary: nav.md

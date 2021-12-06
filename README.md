@@ -17,3 +17,4 @@ Subpackage for Gitbook documentation hosting.
 
 ### [web-integration](/packages/web-integration)
 Subpackage with typescript utilities for easy integration with Hypernet.ID in web-based applications. 
+
