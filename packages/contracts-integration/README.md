@@ -8,3 +8,7 @@ Currently, the Hypernet.ID smart contracts are only deployed to the Rinkeby Test
 on that network can directly query a user's verification status. As Hypernet.ID deploys to other EVM-compatible 
 blockchains, this package will detail how to use this smart contract library's modifiers to protect your protocols
 public and external functions. 
+
+## Hypernet.ID Registry Chain Addresses
+
+- Rinkeby (chainid 4): [`0x8E92D1D990E36e00Af533db811Fc5C342823C817`](https://rinkeby.etherscan.io/address/0x8E92D1D990E36e00Af533db811Fc5C342823C817)
