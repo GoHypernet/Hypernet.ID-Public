@@ -25,7 +25,7 @@ A mobile-based wallet is installed on your smart phone as a native app. Mobile w
 
 ![](https://paper-attachments.dropbox.com/s\_AEFE60B34D5410D0B0116C7A25499E964588F53C8AC0F54224AF5B2651B003D4\_1637460973079\_Hypernet-ID-wallet-connect.gif)
 
-**Why does Hypernet.ID ask my account to** **“sign”** **something through my wallet?**
+**Why does Hypernet.ID ask me account to** **“sign”** **something through my wallet?**
 
 ![](https://paper-attachments.dropbox.com/s\_AEFE60B34D5410D0B0116C7A25499E964588F53C8AC0F54224AF5B2651B003D4\_1637445802173\_image.png)
 
