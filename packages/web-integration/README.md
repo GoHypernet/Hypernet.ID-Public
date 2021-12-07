@@ -2,7 +2,7 @@
 
 This package provides a convienient entry point for integrating with Hypernet.ID in web-based applications. 
 It exports the HypernetID class, which you will need to instantiate with your Customer ID (don't worry, that 
-is public information). HypernetID has a variety of useful methods on it, but the the simplest possible 
+is public information). Hypernet.ID has a variety of useful methods on it, but the the simplest possible 
 integration, you can make use of just a few.
 
 ## Useful API calls
