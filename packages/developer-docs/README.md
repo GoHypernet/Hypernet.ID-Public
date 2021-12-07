@@ -4,13 +4,13 @@
 
 # Hypernet.ID
 
-Hypernet.ID empowers you to safely and securely complete identity and Know Your Customer (KYC) checks. Once 
-you pass the checks, a Non-Fungible Token (NFT) is minted to your linked Ethereum account. Smart contracts of 
-any dApp can then access the publicly available, non-transferrable NFT and interact with your account, helping 
-to ensure that any transfer of value complies with applicable regulations. Once your account possesses a 
-Hypernet.ID NFT, you will not have to go through the identity and KYC verification process again. Instead, you 
-may interact with multiple dApps that each leverage your Hypernet.ID NFT to verify your status, rather than 
-asking you to complete the same checks for each dApp.
+Hypernet.ID empowers you to safely and securely complete Know Your Customer (KYC) and Anti Money Laundering (AML) checks on your customers. Once 
+the identity checks are passed, a Non-Fungible Token (NFT) is minted to the customers' linked Ethereum account. Smart contracts of 
+your dApp can then access the publicly available, non-transferrable NFT and interact with the customers' account, helping 
+to ensure that any transfer of value complies with applicable regulations. Once the customers' account possesses a 
+Hypernet.ID NFT, they will no longer have to go through the identity and KYC verification process again, unless you require periodic updates. 
+
+All end users will be screened against global sanctions lists and adverse media for 365 days from the time of submission. To the extent an issue arises, Hypernet will burn the customre's NFT. If you desire to have continued screening beyond the 365 day period, please let us know and we will configure your account apropriately.
 
 There are two primary ways to integrate Hypernet.ID into your dApp: in your dApp's web-based UI and in your 
 smart contract protocol itelf. 
