@@ -8,7 +8,7 @@ Nearly all consumer crypto wallets on the market today are Heirarchical Determin
 
 Cypto wallets currently take two main form-factors: browser extensions and mobile apps.
 
-Browser-based wallets are distributed as browser extensions and are usually compatible with most popular web browsers (i.e. Chrome, Firefix, Edge, etc). These wallets are installed in your browser environment; they are not native applications and they cannot access your computer’s underlying operating system. Some of the more popular browser extension wallets include:
+Browser-based wallets are distributed as browser extensions and are usually compatible with most popular web browsers (i.e. Chrome, Firefox, Edge, etc). These wallets are installed in your browser environment; they are not native applications and they cannot access your computer’s underlying operating system. Some of the more popular browser extension wallets include:
 
 * [Metamask](https://metamask.io)
 * [Coinbase Wallet](https://wallet.coinbase.com)
