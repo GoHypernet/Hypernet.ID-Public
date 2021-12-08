@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Table of contents
 
 ## Public Repository Summary
