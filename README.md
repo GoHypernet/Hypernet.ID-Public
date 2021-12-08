@@ -17,3 +17,6 @@ Subpackage thats serves as the starting point for Gitbook hosted developer docum
 
 ### [Web Integration](/packages/web-integration)
 Subpackage with typescript utilities for easy integration with Hypernet.ID in web-based applications.
+
+### [User-Facing Documentation](/packages/user-docs)
+Subpackage thats serves as the starting point for Gitbook hosted user-facing documentation.
