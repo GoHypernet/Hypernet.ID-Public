@@ -11,7 +11,7 @@
 
 ## User Documentation
 * [Getting Started as a User](packages/user-docs/README.md)
-    * [Getting Started](packages/user-docs/getting-started/README.md)
+    * [Crypto 101](packages/user-docs/getting-started/README.md)
       * [What is a crypto wallet?](packages/user-docs/getting-started/what-is-a-crypto-wallet.md)
       * [What is an NFT?](packages/user-docs/getting-started/what-is-an-nft.md)
       * [What is Hypernet.ID](packages/user-docs/getting-started/what-is-hypernet.id.md)
