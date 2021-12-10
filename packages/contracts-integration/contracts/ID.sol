@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/Context.sol";
 
 contract ID is Context {
 
-    address public registryOverride = address(0); 
+    address public registryOverride = address(0);
 
     /// @notice setRegistryOverride set the address of the registry contract to user for ID
     /// @dev _registryOverride address of an ERC721-compatible contract with enumeration property
@@ -14,9 +14,9 @@ contract ID is Context {
     }
 
     // @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
-    modifier onlyVerifiedWithCriteria(string memory criteria) {
+    modifier onlyVerifiedWithCriteria(bytes32 criteria) {
          require(
-             _hasBeenVerifiedWithCriteria(_msgSender(), criteria), 
+             _hasBeenVerifiedWithCriteria(_msgSender(), criteria),
              "ID: Invalid user criteria.");
         _;
     }
@@ -34,9 +34,9 @@ contract ID is Context {
     }
 
     function _getRegistryAddress()
-    internal 
-    view 
-    virtual 
+    internal
+    view
+    virtual
     returns (address registry) {
         uint256 id = getChainID();
 
@@ -44,15 +44,15 @@ contract ID is Context {
         if (id == 4) { // rinkeby network
             registry = 0x8E92D1D990E36e00Af533db811Fc5C342823C817;
         } else { // all other networks
-            require(registryOverride != address(0), "ID: Must manually set registryOverride on unsupported chain"); 
-            registry = registryOverride; 
+            require(registryOverride != address(0), "ID: Must manually set registryOverride on unsupported chain");
+            registry = registryOverride;
         }
     }
 
-    function _registrationURI(address owner) 
-    public 
-    view 
-    virtual 
+    function _registrationURI(address owner)
+    public
+    view
+    virtual
     returns (string memory tokenURI) {
         address registry = _getRegistryAddress();
 
@@ -60,13 +60,13 @@ contract ID is Context {
         uint256 tokenID = INfr(registry).tokenOfOwnerByIndex(owner, 0);
 
         // retrieve the registration metadata from the token
-        tokenURI = INfr(registry).tokenURI(tokenID); 
+        tokenURI = INfr(registry).tokenURI(tokenID);
     }
 
-    function _hasBeenVerified(address owner) 
-    internal 
-    view 
-    virtual 
+    function _hasBeenVerified(address owner)
+    internal
+    view
+    virtual
     returns (bool verified) {
         address registry = _getRegistryAddress();
 
@@ -74,33 +74,40 @@ contract ID is Context {
         verified = (INfr(registry).balanceOf(owner) > 0);
     }
 
-    function _hasBeenVerifiedWithCriteria(address owner, string memory criteria) 
-    public 
-    view 
-    virtual 
+    function _hasBeenVerifiedWithCriteria(address owner, bytes32 criteria)
+    public
+    view
+    virtual
     returns (bool verified) {
-        verified = ((toUint256(bytes(_registrationURI(owner))) 
-                   & toUint256(bytes(criteria))) 
-                   > 0);
+        bytes32 target = fromHex(_registrationURI(owner));
+		verified = (target & criteria) > 0;
     }
 
-    function wtf(address owner, string memory criteria) 
-    public 
-    view 
-    virtual 
-    returns (uint verified) {
-        verified = (toUint256(bytes(_registrationURI(owner))) 
-                   & toUint256(bytes(criteria)));
+	// Convert an hexadecimal character to their value
+    function fromHexChar(uint8 c) public pure returns (uint8 output) {
+        if (bytes1(c) >= bytes1('0') && bytes1(c) <= bytes1('9')) {
+            return output = c - uint8(bytes1('0'));
+        }
+        if (bytes1(c) >= bytes1('a') && bytes1(c) <= bytes1('f')) {
+            return output = 10 + c - uint8(bytes1('a'));
+        }
+        if (bytes1(c) >= bytes1('A') && bytes1(c) <= bytes1('F')) {
+            return output = 10 + c - uint8(bytes1('A'));
+        }
     }
 
-    function toUint256(bytes memory _bytes)   
-    internal
-    pure
-    returns (uint256 value) {
-
-      assembly {
-        value := mload(add(_bytes, 0x20))
-      }
+    // Convert an hexadecimal string to raw bytes
+    function fromHex(string memory s) public pure returns (bytes32 rb) {
+        bytes memory ss = bytes(s);
+        require(ss.length%2 == 0, "ID: length must be even");
+        bytes memory r = new bytes(ss.length/2);
+        for (uint i=0; i<ss.length/2; ++i) {
+            r[i] = bytes1(fromHexChar(uint8(ss[2*i])) * 16 +
+                          fromHexChar(uint8(ss[2*i+1])));
+        }
+		assembly {
+            rb := mload(add(r, 32))
+        }
     }
 }
 
