@@ -5,18 +5,21 @@ import "@openzeppelin/contracts/utils/Context.sol";
 
 contract ID is Context {
 
-    address public registryOverride = address(0);
+    address public registryAddress = address(0);
 
-    /// @notice setRegistryOverride set the address of the registry contract to user for ID
-    /// @dev _registryOverride address of an ERC721-compatible contract with enumeration property
-    function setRegistryOverride(address _registryOverride) external virtual {
-        registryOverride = _registryOverride;
+    // when implementing a setter function, be sure to set appropriate permissions
+	bytes8 public CRITERIA;
+
+    /// @notice setRegistryAddress set the address of the registry contract to use for Hypernet.ID
+    /// @dev _registryAddress address of an ERC721-compatible contract with enumeration property
+    function setRegistryAddress(address _registryAddress) external virtual {
+        registryAddress = _registryAddress;
     }
 
     // @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
-    modifier onlyVerifiedWithCriteria(bytes8 criteria) {
+    modifier onlyVerifiedWithCriteria() {
          require(
-             _hasBeenVerifiedWithCriteria(_msgSender(), criteria),
+             _hasBeenVerifiedWithCriteria(_msgSender()),
              "ID: Invalid user criteria.");
         _;
     }
@@ -27,28 +30,14 @@ contract ID is Context {
         _;
     }
 
-    // @dev internal helper function to determine the netwok we are on
-    function _getChainID() internal view returns (uint256 id) {
-        assembly {
-            id := chainid()
-        }
-    }
-
     // @dev internal helper function to return the correct address of the Hypernet.ID registry contract
     function _getRegistryAddress()
     internal
     view
     virtual
-    returns (address registry) {
-        uint256 id = _getChainID();
-
-        // set the registry address dependingon the chain
-        if (id == 4) { // rinkeby network
-            registry = 0x8E92D1D990E36e00Af533db811Fc5C342823C817;
-        } else { // all other networks
-            require(registryOverride != address(0), "ID: Must manually set registryOverride on unsupported chain");
-            registry = registryOverride;
-        }
+    returns (address) {
+        require(registryAddress != address(0), "ID: Registry address not set");
+		return registryAddress;
     }
 
     // @dev internal helper function for fetching a user's registration metadata
@@ -77,13 +66,13 @@ contract ID is Context {
         verified = (INfr(registry).balanceOf(owner) > 0);
     }
 
-    function _hasBeenVerifiedWithCriteria(address owner, bytes8 criteria)
+    function _hasBeenVerifiedWithCriteria(address owner)
     internal
     view
     virtual
     returns (bool verified) {
-        bytes32 target = _fromTokenURIToBytes(_registrationURI(owner));
-		verified = (target & criteria) > 0;
+        bytes32 target = _fromTokenURIToBytes8(_registrationURI(owner));
+		verified = (target & CRITERIA) > 0;
     }
 
 	// Convert an hexadecimal character to their value
@@ -96,8 +85,8 @@ contract ID is Context {
         }
     }
 
-    // Convert an hexadecimal string to raw bytes
-    function _fromTokenURIToBytes(string memory s)
+    // @dev Convert a user's metadata into bytes format for masking
+    function _fromTokenURIToBytes8(string memory s)
 	internal
 	pure
 	returns (bytes8 rb) {

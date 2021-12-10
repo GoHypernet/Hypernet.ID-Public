@@ -27,7 +27,7 @@ describe("Check Modifiers", function () {
         await test.deployed();
 
         // set the override address for the ID registry for local testing
-        tx = await test.setRegistryOverride(idregistry.address);
+        tx = await test.setRegistryAddress(idregistry.address);
         await tx.wait();
     });
 
