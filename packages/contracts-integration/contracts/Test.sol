@@ -7,11 +7,11 @@ contract Test is ID {
 
     string public name;
 
-    bytes32 public CRITERIA;
+    bytes8 public CRITERIA;
 
     constructor (string memory _name, string memory _CRITERIA) {
         name = _name;
-        CRITERIA = fromHex(_CRITERIA);
+        CRITERIA = _fromTokenURIToBytes(_CRITERIA);
     }
 
     // can be called by anyone

@@ -54,7 +54,7 @@ describe("Check Modifiers", function () {
         const newName = "User Was Verified"
 
         // submit transaction from owner which has been verified
-        let tx = await test.changeNameIfVerifiedWithCriteria(newName);
+       let tx = await test.changeNameIfVerifiedWithCriteria(newName);
         await tx.wait();
 
         expect(await test.name()).to.equal(newName);
