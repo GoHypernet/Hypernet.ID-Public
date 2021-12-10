@@ -5,18 +5,11 @@ import "@openzeppelin/contracts/utils/Context.sol";
 
 contract ID is Context {
 
+    // when implementing setter function, be sure to set appropriate permissions
     address public registryAddress = address(0);
-
-    // when implementing a setter function, be sure to set appropriate permissions
 	bytes8 public CRITERIA;
 
-    /// @notice setRegistryAddress set the address of the registry contract to use for Hypernet.ID
-    /// @dev _registryAddress address of an ERC721-compatible contract with enumeration property
-    function setRegistryAddress(address _registryAddress) external virtual {
-        registryAddress = _registryAddress;
-    }
-
-    // @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
+    /// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
     modifier onlyVerifiedWithCriteria() {
          require(
              _hasBeenVerifiedWithCriteria(_msgSender()),
@@ -24,23 +17,22 @@ contract ID is Context {
         _;
     }
 
-    // @dev onlyVerified Modifier that enforces an account has been verified at some point
+    /// @dev onlyVerified Modifier that enforces an account has been verified at some point
     modifier onlyVerified() {
         require(_hasBeenVerified(_msgSender()), "ID: User has no verification token");
         _;
     }
 
-    // @dev internal helper function to return the correct address of the Hypernet.ID registry contract
+    /// @dev internal helper function to return the correct address of the Hypernet.ID registry contract
     function _getRegistryAddress()
-    internal
+    private
     view
-    virtual
     returns (address) {
         require(registryAddress != address(0), "ID: Registry address not set");
 		return registryAddress;
     }
 
-    // @dev internal helper function for fetching a user's registration metadata
+    /// @dev internal helper function for fetching a user's registration metadata
     function _registrationURI(address owner)
     internal
     view
@@ -85,7 +77,7 @@ contract ID is Context {
         }
     }
 
-    // @dev Convert a user's metadata into bytes format for masking
+    /// @dev Convert a user's metadata into bytes format for masking
     function _fromTokenURIToBytes8(string memory s)
 	internal
 	pure

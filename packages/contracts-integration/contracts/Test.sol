@@ -13,7 +13,7 @@ contract Test is Ownable, ID {
         CRITERIA = _fromTokenURIToBytes8(_CRITERIA);
     }
 
-    // @dev be sure to protect the setter function for CRITERIA appropriately
+    /// @dev be sure to protect the setter function for CRITERIA appropriately
 	function setCriteria(bytes8 _CRITERIA)
 	external
 	onlyOwner()
@@ -21,14 +21,22 @@ contract Test is Ownable, ID {
 		CRITERIA = _CRITERIA;
 	}
 
-    // @dev a function that can be called by anyone
+    /// @dev be sure to protect the setter function for registryAddress appropriately
+    function setRegistryAddress(address _registryAddress)
+	external
+	onlyOwner()
+	{
+        registryAddress = _registryAddress;
+    }
+
+    /// @dev a function that can be called by anyone
     function changeName(string memory _name )
     external
     {
         name = _name;
     }
 
-    // @dev a function that can only be called if user has been verified at some point
+    /// @dev a function that can only be called if user has been verified at some point
     function changeNameIfVerified(string memory _name )
     external
     onlyVerified()
@@ -36,7 +44,7 @@ contract Test is Ownable, ID {
         name = _name;
     }
 
-    // @dev a function that can only be called if user has undergone a specified identification process
+    /// @dev a function that can only be called if user has undergone a specified identification process
     function changeNameIfVerifiedWithCriteria(string memory _name)
     external
     onlyVerifiedWithCriteria()
