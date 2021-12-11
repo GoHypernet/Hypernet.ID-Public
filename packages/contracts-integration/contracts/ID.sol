@@ -64,7 +64,7 @@ contract ID is Context {
     virtual
     returns (bool verified) {
         bytes32 target = _fromTokenURIToBytes8(_registrationURI(owner));
-		verified = (target & CRITERIA) > 0;
+		verified = (target & CRITERIA) == CRITERIA;
     }
 
 	// Convert an hexadecimal character to their value

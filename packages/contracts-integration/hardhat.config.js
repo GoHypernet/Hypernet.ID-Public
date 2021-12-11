@@ -18,7 +18,7 @@ task("string2bytes", "Convert a string to bytes")
   .setAction(async (taskArgs) => {
     const accounts = await hre.ethers.getSigners();
     const string = taskArgs.string;
-  
+
     const inBytes = hre.ethers.utils.formatBytes32String(string);
     console.log("Bytes:", inBytes)
 
@@ -29,7 +29,7 @@ task("bytes2string", "Convert some bytes to utf8 string")
   .setAction(async (taskArgs) => {
     const accounts = await hre.ethers.getSigners();
     const bytes = taskArgs.bytes;
-  
+
     const string = hre.ethers.utils.toUtf8Bytes(bytes);
     console.log("String:", string.toString())
 
@@ -42,7 +42,15 @@ task("bytes2string", "Convert some bytes to utf8 string")
  * @type import('hardhat/config').HardhatUserConfig
  */
 module.exports = {
-  solidity: "0.8.4",
+	solidity: {
+		version: "0.8.4",
+		settings: {
+		  optimizer: {
+			enabled: true,
+			runs: 200,
+		  },
+		},
+	  },
   contractSizer: {
     alphaSort: true,
     runOnCompile: true,
