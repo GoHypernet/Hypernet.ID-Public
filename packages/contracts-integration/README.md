@@ -1,10 +1,10 @@
 # Smart Contract Integration
 
-Hypernet.ID mints Non-Fungible Token assets directly to a user's account on the blockchain. This package allows 
-protocol developers to gate access to their protocol by requiring that an account own a Hypernet.ID NFT and that 
-it indicates the user has met certain identity check criteria. 
+[Hypernet.ID](https://hypernet.id/) mints Non-Fungible Token assets directly to a user's account on the blockchain. 
+This package allows protocol developers to gate access to their protocol by requiring that an account own a Hypernet.ID 
+NFT and that it indicates the user has met certain identity check criteria. 
 
-Currently, the Hypernet.ID smart contracts are only deployed to the Rinkeby Testnet, therefore only smart contracts
+Currently, the Hypernet.ID smart contract registries are only deployed to the Rinkeby Testnet. Therefor only smart contracts
 on that network can directly query a user's verification status. As Hypernet.ID deploys to other EVM-compatible 
 blockchains, this package will detail how to use this smart contract library's modifiers to protect your protocol's
 public and external functions. 
@@ -17,9 +17,10 @@ public and external functions.
 
 Hypernet.ID publishes a helper contract, 
 [`ID.sol`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol), 
-that you can inherit in your own smart contract to protect public and external functions from being accessed by users 
-who have not undergone sufficient identity verification. This allows for id verification to be enforced at the protocol 
-level so that it cannot be circumvented. To install Hypernet.ID's helper contracts in your project run:
+as an [NPM](https://www.npmjs.com/package/@hypernetlabs/hypernet-id-contracts-integration) package that you can inherit in your 
+own smart contract to protect public and external functions from being accessed by users who have not undergone sufficient identity 
+verification. This allows for id verification to be enforced at the protocol level so that it cannot be circumvented. To install 
+Hypernet.ID's helper contracts in your project run:
 
 ```
 npm install --sav-dev @hypernetlabs/hypernet-id-contracts-integration
