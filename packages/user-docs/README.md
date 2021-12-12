@@ -5,7 +5,7 @@
 ### User Documentation
 
 * Getting Started
-  * [What is Hypernet.ID](getting-started/what-is-hypernet.id.md)
+  * [What is Hypernet.ID?](getting-started/what-is-hypernet.id.md)
   * [What is KYC/AML?](getting-started/what-is-kyc-aml.md)
   * [What is a crypto wallet?](getting-started/what-is-a-crypto-wallet.md)
   * [What is an NFT?](getting-started/what-is-an-nft.md)
