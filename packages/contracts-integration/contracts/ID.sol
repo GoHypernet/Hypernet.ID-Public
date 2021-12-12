@@ -11,18 +11,18 @@ contract ID is Context {
 
     /// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
     modifier onlyVerifiedWithCriteria() {
-         require(
-             _hasBeenVerifiedWithCriteria(_msgSender()),
-             "ID: Invalid verification criteria");
+        require(
+            _hasBeenVerifiedWithCriteria(_msgSender()),
+            "ID: Invalid verification criteria");
         _;
     }
 
 	/// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
 	/// by specifying the tokenid, the modifer saves ~4000 gas as the expense of UX complexity
     modifier onlyVerifiedTokenWithCriteria(uint256 tokenID) {
-         require(
-             _hasBeenVerifiedWithCriteria(_msgSender(), tokenID),
-             "ID: Invalid verification criteria");
+        require(
+            _hasBeenVerifiedWithCriteria(_msgSender(), tokenID),
+            "ID: Invalid verification criteria");
         _;
     }
 
