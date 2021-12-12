@@ -27,7 +27,7 @@ npm install --sav-dev @hypernetlabs/hypernet-id-contracts-integration
 
 ## Usage
 
-Protecting your smart contract's external and public functions from unverified accounts simply requries that the be 
+Protecting your smart contract's external and public functions from unverified accounts simply requries that they be 
 decorated with one of the following modifiers defined in `ID.sol`.
 
 - `onlyVerified`: Simply checks that the [`msg.sender`](https://docs.soliditylang.org/en/v0.8.10/structure-of-a-contract.html?highlight=msg.sender#function-modifiers) owns a Hypernet.ID NFT but does not check that any specific id checks were performed. This is the most gas effient modifier.
