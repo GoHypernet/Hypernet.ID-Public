@@ -5,7 +5,7 @@ import "@openzeppelin/contracts/utils/Context.sol";
 
 contract ID is Context {
 
-    // when implementing setter function, be sure to set appropriate permissions
+    // when implementing setter functions, be sure to set appropriate permissions
     address public registryAddress = address(0);
 	bytes8 public CRITERIA;
 
@@ -13,38 +13,25 @@ contract ID is Context {
     modifier onlyVerifiedWithCriteria() {
          require(
              _hasBeenVerifiedWithCriteria(_msgSender()),
-             "ID: Invalid user criteria.");
+             "ID: Invalid verification criteria");
+        _;
+    }
+
+	/// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
+	/// by specifying the tokenid, the modifer saves ~4000 gas as the expense of UX complexity
+    modifier onlyVerifiedTokenWithCriteria(uint256 tokenID) {
+         require(
+             _hasBeenVerifiedWithCriteria(_msgSender(), tokenID),
+             "ID: Invalid verification criteria");
         _;
     }
 
     /// @dev onlyVerified Modifier that enforces an account has been verified at some point
+	/// by only checking for non-zero balance, the modifer saves ~22000 gas at expense of
+	/// ensuring user has met requirements of id verification regulations
     modifier onlyVerified() {
         require(_hasBeenVerified(_msgSender()), "ID: User has no verification token");
         _;
-    }
-
-    /// @dev internal helper function to return the correct address of the Hypernet.ID registry contract
-    function _getRegistryAddress()
-    private
-    view
-    returns (address) {
-        require(registryAddress != address(0), "ID: Registry address not set");
-		return registryAddress;
-    }
-
-    /// @dev internal helper function for fetching a user's registration metadata
-    function _registrationURI(address owner)
-    internal
-    view
-    virtual
-    returns (string memory tokenURI) {
-        address registry = _getRegistryAddress();
-
-        // look up the tokenID based on the given owner address
-        uint256 tokenID = INfr(registry).tokenOfOwnerByIndex(owner, 0);
-
-        // retrieve the registration metadata from the token
-        tokenURI = INfr(registry).tokenURI(tokenID);
     }
 
     function _hasBeenVerified(address owner)
@@ -52,23 +39,40 @@ contract ID is Context {
     view
     virtual
     returns (bool verified) {
-        address registry = _getRegistryAddress();
-
         // check for a non-zero balance of the given account
-        verified = (INfr(registry).balanceOf(owner) > 0);
+        verified = (INfr(registryAddress).balanceOf(owner) > 0);
     }
 
     function _hasBeenVerifiedWithCriteria(address owner)
     internal
     view
     virtual
-    returns (bool verified) {
-        bytes32 target = _fromTokenURIToBytes8(_registrationURI(owner));
-		verified = (target & CRITERIA) == CRITERIA;
+    returns (bool) {
+		bytes8 target = _fromTokenURIToBytes8(
+			INfr(registryAddress).tokenURI(
+			        INfr(registryAddress).tokenOfOwnerByIndex(owner, 0)
+			    )
+			);
+		return ((target & CRITERIA) == CRITERIA);
     }
 
-	// Convert an hexadecimal character to their value
-    function _fromHexChar(uint8 c) private pure returns (uint8 output) {
+	function _hasBeenVerifiedWithCriteria(address owner, uint256 tokenid)
+    internal
+    view
+    virtual
+    returns (bool) {
+		require(INfr(registryAddress).ownerOf(tokenid) == owner, "ID: msgsender not owner of tokenID");
+		bytes8 target = _fromTokenURIToBytes8(
+		        INfr(registryAddress).tokenURI(tokenid)
+			);
+		return ((target & CRITERIA) == CRITERIA);
+    }
+
+	/// @dev Convert an hexadecimal character to their value
+    function _fromHexChar(uint8 c)
+	private
+	pure
+	returns (uint8 output) {
         if (bytes1(c) >= bytes1('0') && bytes1(c) <= bytes1('9')) {
             return output = c - uint8(bytes1('0'));
         }
@@ -83,6 +87,7 @@ contract ID is Context {
 	pure
 	returns (bytes8 rb) {
         bytes memory ss = bytes(s);
+		// ensure the user is passing in a Hypernet.ID compatible metadata string
         require(ss.length == 32, "ID: length must be 32");
 
         bytes memory r = new bytes(8);
@@ -105,6 +110,15 @@ interface INfr {
      * @dev Returns the number of tokens in ``owner``'s account.
      */
     function balanceOf(address owner) external view returns (uint256 balance);
+
+	/**
+     * @dev Returns the owner of the `tokenId` token.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
+    function ownerOf(uint256 tokenId) external view returns (address owner);
 
     /**
      * @dev Returns a token ID owned by `owner` at a given `index` of its token list.

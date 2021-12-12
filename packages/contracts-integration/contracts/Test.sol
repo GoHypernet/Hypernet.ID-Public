@@ -52,4 +52,13 @@ contract Test is Ownable, ID {
         name = _name;
     }
 
+	/// @dev a function that can only be called if user has undergone a specified identification process
+	/// and specify their tokenid as one of the function inputs
+    function changeNameIfVerifiedTokenWithCriteria(string memory _name, uint256 tokenid)
+    external
+    onlyVerifiedTokenWithCriteria(tokenid)
+    {
+        name = _name;
+    }
+
 }
