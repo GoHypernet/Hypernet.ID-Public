@@ -17,8 +17,8 @@ contract ID is Context {
         _;
     }
 
-	/// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
-	/// by specifying the tokenid, the modifer saves ~4000 gas as the expense of UX complexity
+	/// @dev onlyVerifiedTokenWithCriteria Modifier that enforces a specific verification criteria
+	/// by specifying the tokenid, the modifer saves ~4000 gas at the expense of UX complexity
     modifier onlyVerifiedTokenWithCriteria(uint256 tokenID) {
         require(
             _hasBeenVerifiedWithCriteria(_msgSender(), tokenID),
