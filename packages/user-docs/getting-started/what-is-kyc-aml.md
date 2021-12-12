@@ -6,8 +6,6 @@ Institutions of all sizes use KYC processes to ensure that they know enough abou
 These processes are often necessary to ensure that the institution complies with regulations such as the US Department of 
 Treasury’s Office of Foreign Asset Controls (OFAC) and other asset control regulations applicable in different jurisdictions.
 
-
-
 ## Anti-Money Laundering (AML)
 
 Anti-money laundering laws, regulations, and policies are intended to prevent criminal individuals, organizations and enterprises 
