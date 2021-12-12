@@ -4,6 +4,10 @@ pragma solidity ^0.8.0;
 import "./ID.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+/// @dev this is an contract used for demonstrating how to use the on-chain Hypernet.ID
+/// registry to protect your contract via the modifiers defined in ID.sol. Running the
+/// Hardhat tests will give you an accurate estimate of the additional gas requirements
+/// for enforcing id verification.
 contract Test is Ownable, ID {
 
     string public name;
