@@ -30,9 +30,9 @@ npm install --sav-dev @hypernetlabs/hypernet-id-contracts-integration
 Protecting your smart contract's external and public functions from unverified accounts simply requries that they be 
 decorated with one of the following modifiers defined in `ID.sol`.
 
-- `onlyVerified`: Simply checks that the [`msg.sender`](https://docs.soliditylang.org/en/v0.8.10/structure-of-a-contract.html?highlight=msg.sender#function-modifiers) owns a Hypernet.ID NFT but does not check that any specific id checks were performed. This is the most gas effient modifier.
-- `onlyVerifiedWithCriteria`: checks that the `msg.sender` owns a Hypernet.ID NFT and that its owner has met the id checks specified in `CRITERIA`. This is the most gas expensive modifer.
-- `onlyVerifiedTokenWithCriteria`: checks that the `msg.sender` owns a Hypernet.ID NFT and that its owner has met the id checks specified in `CRITERIA`. This is about 12% cheaper to call than `onlyVerifiedWithCriteria` but requires than a `tokenid` be given as an argument.
+- [`onlyVerified`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L32): Simply checks that the [`msg.sender`](https://docs.soliditylang.org/en/v0.8.10/structure-of-a-contract.html?highlight=msg.sender#function-modifiers) owns a Hypernet.ID NFT but does not check that any specific id checks were performed. This is the most gas effient modifier.
+- [`onlyVerifiedWithCriteria`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L13): Checks that the `msg.sender` owns a Hypernet.ID NFT and that its owner has met the id checks specified in `CRITERIA`. This is the most gas expensive modifer.
+- [`onlyVerifiedTokenWithCriteria`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L22): Checks that the `msg.sender` owns a Hypernet.ID NFT and that its owner has met the id checks specified in `CRITERIA`. This is about 12% cheaper to call than `onlyVerifiedWithCriteria` but requires than a `tokenid` be given as an argument.
 
 You can see a simple yet complete example of how to use `ID.sol` 
 [here](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/Test.sol). In order to gate on specific
