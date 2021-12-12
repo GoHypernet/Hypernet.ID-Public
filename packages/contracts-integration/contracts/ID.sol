@@ -1,106 +1,105 @@
-//SPDX-License-Identifier: Unlicense
+//SPDX-License-Identifier: MIT
 pragma solidity ^0.8.0;
 
 import "@openzeppelin/contracts/utils/Context.sol";
 
 contract ID is Context {
 
-    address public registryOverride = address(0); 
+    // when implementing setter functions, be sure to set appropriate permissions
+    address public registryAddress = address(0);
+	bytes8 public CRITERIA;
 
-    /// @notice setRegistryOverride set the address of the registry contract to user for ID
-    /// @dev _registryOverride address of an ERC721-compatible contract with enumeration property
-    function setRegistryOverride(address _registryOverride) external virtual {
-        registryOverride = _registryOverride;
-    }
-
-    // @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
-    modifier onlyVerifiedWithCriteria(string memory criteria) {
-         require(
-             _hasBeenVerifiedWithCriteria(_msgSender(), criteria), 
-             "ID: Invalid user criteria.");
+    /// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
+    modifier onlyVerifiedWithCriteria() {
+        require(
+            _hasBeenVerifiedWithCriteria(_msgSender()),
+            "ID: Invalid verification criteria");
         _;
     }
 
-    // @dev onlyVerified Modifier that enforces an account has been verified at some point
+	/// @dev onlyVerifiedCriteria Modifier that enforces a specific verification criteria
+	/// by specifying the tokenid, the modifer saves ~4000 gas as the expense of UX complexity
+    modifier onlyVerifiedTokenWithCriteria(uint256 tokenID) {
+        require(
+            _hasBeenVerifiedWithCriteria(_msgSender(), tokenID),
+            "ID: Invalid verification criteria");
+        _;
+    }
+
+    /// @dev onlyVerified Modifier that enforces an account has been verified at some point
+	/// by only checking for non-zero balance, the modifer saves ~22000 gas at expense of
+	/// ensuring user has met requirements of id verification regulations
     modifier onlyVerified() {
         require(_hasBeenVerified(_msgSender()), "ID: User has no verification token");
         _;
     }
 
-    function getChainID() public view returns (uint256 id) {
-        assembly {
-            id := chainid()
-        }
-    }
-
-    function _getRegistryAddress()
-    internal 
-    view 
-    virtual 
-    returns (address registry) {
-        uint256 id = getChainID();
-
-        // set the registry address dependingon the chain
-        if (id == 4) { // rinkeby network
-            registry = 0x8E92D1D990E36e00Af533db811Fc5C342823C817;
-        } else { // all other networks
-            require(registryOverride != address(0), "ID: Must manually set registryOverride on unsupported chain"); 
-            registry = registryOverride; 
-        }
-    }
-
-    function _registrationURI(address owner) 
-    public 
-    view 
-    virtual 
-    returns (string memory tokenURI) {
-        address registry = _getRegistryAddress();
-
-        // look up the tokenID based on the given owner address
-        uint256 tokenID = INfr(registry).tokenOfOwnerByIndex(owner, 0);
-
-        // retrieve the registration metadata from the token
-        tokenURI = INfr(registry).tokenURI(tokenID); 
-    }
-
-    function _hasBeenVerified(address owner) 
-    internal 
-    view 
-    virtual 
-    returns (bool verified) {
-        address registry = _getRegistryAddress();
-
-        // check for a non-zero balance of the given account
-        verified = (INfr(registry).balanceOf(owner) > 0);
-    }
-
-    function _hasBeenVerifiedWithCriteria(address owner, string memory criteria) 
-    public 
-    view 
-    virtual 
-    returns (bool verified) {
-        verified = ((toUint256(bytes(_registrationURI(owner))) 
-                   & toUint256(bytes(criteria))) 
-                   > 0);
-    }
-
-    function wtf(address owner, string memory criteria) 
-    public 
-    view 
-    virtual 
-    returns (uint verified) {
-        verified = (toUint256(bytes(_registrationURI(owner))) 
-                   & toUint256(bytes(criteria)));
-    }
-
-    function toUint256(bytes memory _bytes)   
+    function _hasBeenVerified(address owner)
     internal
-    pure
-    returns (uint256 value) {
+    view
+    virtual
+    returns (bool verified) {
+        // check for a non-zero balance of the given account
+        verified = (INfr(registryAddress).balanceOf(owner) > 0);
+    }
 
-      assembly {
-        value := mload(add(_bytes, 0x20))
-      }
+    function _hasBeenVerifiedWithCriteria(address owner)
+    internal
+    view
+    virtual
+    returns (bool) {
+		bytes8 target = _fromTokenURIToBytes8(
+			INfr(registryAddress).tokenURI(
+			        INfr(registryAddress).tokenOfOwnerByIndex(owner, 0)
+			    )
+			);
+		return ((target & CRITERIA) == CRITERIA);
+    }
+
+	function _hasBeenVerifiedWithCriteria(address owner, uint256 tokenid)
+    internal
+    view
+    virtual
+    returns (bool) {
+		require(INfr(registryAddress).ownerOf(tokenid) == owner, "ID: msgsender not owner of tokenID");
+		bytes8 target = _fromTokenURIToBytes8(
+		        INfr(registryAddress).tokenURI(tokenid)
+			);
+		return ((target & CRITERIA) == CRITERIA);
+    }
+
+	/// @dev Convert an hexadecimal character to their value
+    function _fromHexChar(uint8 c)
+	private
+	pure
+	returns (uint8 output) {
+        if (bytes1(c) >= bytes1('0') && bytes1(c) <= bytes1('9')) {
+            return output = c - uint8(bytes1('0'));
+        }
+        if (bytes1(c) >= bytes1('a') && bytes1(c) <= bytes1('f')) {
+            return output = 10 + c - uint8(bytes1('a'));
+        }
+    }
+
+    /// @dev Convert a user's metadata into bytes format for masking
+    function _fromTokenURIToBytes8(string memory s)
+	internal
+	pure
+	returns (bytes8 rb) {
+        bytes memory ss = bytes(s);
+		// ensure the user is passing in a Hypernet.ID compatible metadata string
+        require(ss.length == 32, "ID: length must be 32");
+
+        bytes memory r = new bytes(8);
+        for (uint i=0; i<8; ++i) {
+            r[i] = bytes1(_fromHexChar(uint8(ss[2*i])) * 16 +
+                          _fromHexChar(uint8(ss[2*i+1])));
+        }
+
+		// convert from bytes array to bytes8 type
+		assembly {
+            rb := mload(add(r, 32))
+        }
     }
 }
 
@@ -112,6 +111,15 @@ interface INfr {
      */
     function balanceOf(address owner) external view returns (uint256 balance);
 
+	/**
+     * @dev Returns the owner of the `tokenId` token.
+     *
+     * Requirements:
+     *
+     * - `tokenId` must exist.
+     */
+    function ownerOf(uint256 tokenId) external view returns (address owner);
+
     /**
      * @dev Returns a token ID owned by `owner` at a given `index` of its token list.
      * Use along with {balanceOf} to enumerate all of ``owner``'s tokens.
@@ -122,14 +130,4 @@ interface INfr {
      * @dev See {IERC721Metadata-tokenURI}.
      */
     function tokenURI(uint256 tokenId) external view returns (string memory);
-
-    /**
-     * @dev Returns true if this contract implements the interface defined by
-     * `interfaceId`. See the corresponding
-     * https://eips.ethereum.org/EIPS/eip-165#how-interfaces-are-identified[EIP section]
-     * to learn more about how these ids are created.
-     *
-     * This function call must use less than 30 000 gas.
-     */
-    function supportsInterface(bytes4 interfaceId) external view returns (bool);
 }
