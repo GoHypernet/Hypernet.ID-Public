@@ -5,7 +5,7 @@ This package allows protocol developers to gate access to their protocol by requ
 NFT and that it indicates the user has met certain identity check criteria. 
 
 Currently, the Hypernet.ID smart contract registries are only deployed to the Rinkeby Testnet. Therefor only smart contracts
-on that network can directly query a user's verification status. As Hypernet.ID deploys to other EVM-compatible 
+on that network can directly query a user's verification status. As Hypernet.ID deploys to other [EVM-compatible](https://ethereum.org/en/developers/docs/evm/) 
 blockchains, this package will detail how to use this smart contract library's modifiers to protect your protocol's
 public and external functions. 
 
