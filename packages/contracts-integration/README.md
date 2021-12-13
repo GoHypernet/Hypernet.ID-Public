@@ -10,7 +10,7 @@ the user presented during their identity verification screening, what country co
 of when they passed the screening. This bitmap only indicates the PII was presented and passed verification checks; no PII is 
 actually written to the blockchain. See the full [NFT specification](/packages/developer-docs/token-specification.md) for details.
 
-**NOTE**: In order to adhere to the specification [EIP721](https://eips.ethereum.org/EIPS/eip-721) standard, the Hypernet.ID 
+**NOTE**: In order to adhere to the specification of the [EIP721](https://eips.ethereum.org/EIPS/eip-721) standard, the Hypernet.ID 
 bit field is encoded as a UTF-8 string. The smart contract integration package handles conversion from UTF-8 to bits for you.
 
 ## Hypernet.ID Registry Chain Addresses
