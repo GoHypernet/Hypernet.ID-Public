@@ -13,14 +13,15 @@ actually written to the blockchain. See the full [NFT specification](/packages/d
 **NOTE**: In order to adhere to the specification [EIP721](https://eips.ethereum.org/EIPS/eip-721) standard, the Hypernet.ID 
 bit field is encoded as a UTF-8 string. The smart contract integration package handles conversion from UTF-8 to bits for you.
 
-Currently, the Hypernet.ID smart contract registries are only deployed to the Rinkeby Testnet. Therefor only smart contracts
-on that network can directly query a user's verification status. As Hypernet.ID deploys to other [EVM-compatible](https://ethereum.org/en/developers/docs/evm/) 
-blockchains, this package will detail how to use this smart contract library's modifiers to protect your protocol's
-public and external functions. 
-
 ## Hypernet.ID Registry Chain Addresses
 
-- Rinkeby (chainid 4): [`0x8E92D1D990E36e00Af533db811Fc5C342823C817`](https://rinkeby.etherscan.io/address/0x8E92D1D990E36e00Af533db811Fc5C342823C817)
+Currently, the Hypernet.ID smart contract registries are only deployed to the Rinkeby Testnet. Therefor, only smart contracts
+on that network can directly query a user's verification status. As Hypernet.ID deploys to other 
+[EVM-compatible](https://ethereum.org/en/developers/docs/evm/) blockchains, this section will list the offical contract 
+addresses that Hypernet.ID administers. 
+
+### Rinkeby (chainid: 4)
+[`0x8E92D1D990E36e00Af533db811Fc5C342823C817`](https://rinkeby.etherscan.io/address/0x8E92D1D990E36e00Af533db811Fc5C342823C817)
 
 ## Installation
 
