@@ -1,8 +1,17 @@
 # Smart Contract Integration
 
+## How It Works
 [Hypernet.ID](https://hypernet.id/) mints Non-Fungible Token assets directly to a user's account on the blockchain. 
 This package allows protocol developers to gate access to their protocol by requiring that an account own a Hypernet.ID 
 NFT and that it indicates the user has met certain identity check criteria. 
+
+The `tokenURI` field of each Hypernet.ID NFT contains a bit field that indicates what Personally Identifying Information (PII) 
+the user presented during their identity verification screening, what country code they were verified under, and the timestamp
+of when they passed the screening. This bitmap only indicates the PII was presented and passed verification checks; no PII is 
+actually written to the blockchain. See the full [NFT specification](packates/developer-docs/token-specification.md) for details.
+
+**NOTE**: In order to adhere to the specification [EIP721](https://eips.ethereum.org/EIPS/eip-721) standard, the Hypernet.ID 
+bit field is encoded as a UTF-8 string. The smart contract integration package handles conversion from UTF-8 to bits for you.
 
 Currently, the Hypernet.ID smart contract registries are only deployed to the Rinkeby Testnet. Therefor only smart contracts
 on that network can directly query a user's verification status. As Hypernet.ID deploys to other EVM-compatible 

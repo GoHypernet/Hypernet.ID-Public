@@ -1,5 +1,22 @@
 {
-  "name": "hardhat-project",
+  "name": "@hypernetlabs/hypernet-id-contracts-integration",
+  "description": "A minimalist smart contract library for on-chain identity verification.",
+  "version": "0.0.1",
+  "files": [
+    "contracts/ID.sol"
+  ],
+  "repository": {
+    "type": "https://github.com/GoHypernet/Hypernet.ID-Public",
+    "url": "https://github.com/GoHypernet/Hypernet.ID-Public"
+  },
+  "keywords": [
+    "solidity",
+    "smart",
+    "contracts",
+    "KYC",
+    "AML",
+    "Hypernet.ID"
+    ],
   "devDependencies": {
     "@nomiclabs/hardhat-ethers": "^2.0.3",
     "@nomiclabs/hardhat-waffle": "^2.0.1",
