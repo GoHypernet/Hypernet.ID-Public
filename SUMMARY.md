@@ -8,11 +8,12 @@
 * [Getting Started as a Developer](packages/developer-docs/README.md)
   * [Web Integration](packages/web-integration/README.md)
   * [Smart Contract Integration](packages/contracts-integration/README.md)
+  * [Hypernet.ID NFT Specification](packages/developer-docs/token-specification.md)
 
 ## User Documentation
 * [Getting Started as a User](packages/user-docs/README.md)
     * [Crypto 101](packages/user-docs/getting-started/README.md)
-      * [What is Hypernet.ID](packages/user-docs/getting-started/what-is-hypernet.id.md)
+      * [What is Hypernet.ID?](packages/user-docs/getting-started/what-is-hypernet.id.md)
       * [What is KYC/AML?](packages/user-docs/getting-started/what-is-kyc-aml.md)
       * [What is a crypto wallet?](packages/user-docs/getting-started/what-is-a-crypto-wallet.md)
       * [What is an NFT?](packages/user-docs/getting-started/what-is-an-nft.md)
