@@ -3,7 +3,7 @@
 ## How It Works
 This package provides a convienient entry point for integrating with Hypernet.ID in web-based applications (like a 
 dApp or traditional webapp). It exports the HypernetID class, which you will need to instantiate with your Customer 
-ID (don't worry, that is public information). Hypernet.ID has a variety of useful methods available, but the simplest 
+ID (don't worry, that is public information). Hypernet.ID has a variety of useful methods available, but for the simplest 
 possible integration, you can make use of just a few.
 
 ## Installation
