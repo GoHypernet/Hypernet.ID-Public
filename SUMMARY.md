@@ -18,7 +18,7 @@
       * [What is a crypto wallet?](packages/user-docs/getting-started/what-is-a-crypto-wallet.md)
       * [What is an NFT?](packages/user-docs/getting-started/what-is-an-nft.md)
     * [FAQs](packages/user-docs/faqs/README.md)
-      * [Can I mint more that one wallet?](packages/user-docs/faqs/can-i-mint-more-that-one-wallet.md)
+      * [Can I register more that one wallet?](packages/user-docs/faqs/can-i-register-more-that-one-wallet.md)
       * [How is my identity used?](packages/user-docs/faqs/how-is-my-my-identity-used.md)
       * [I am experiencing a difficulty with my camera on my web browser. How can I resolve this issue?](packages/user-docs/faqs/i-am-experiencing-a-difficulty-with-my-camera-on-my-web-browser.-how-can-i-resolve-this-issue.md)
       * [I am stuck. How can I access customer support?](packages/user-docs/faqs/i-am-stuck.-how-can-i-access-customer-support.md)
