@@ -1,6 +1,7 @@
 import {
 	CustomerLinkId,
 	IdentityToken,
+	MintedIdentityToken,
 } from "@hypernetlabs/hypernet-id-objects";
 import {
 	UUID,
@@ -34,11 +35,11 @@ export class HypernetID implements IHypernetID {
 	public getIdentityTokenForAccountOnChain(
 		accountAddress: EthereumAccountAddress,
 		chainId: ChainId,
-	): ResultAsync<IdentityToken | null, AjaxError> {
+	): ResultAsync<MintedIdentityToken | null, AjaxError> {
 		const requestUrl = new URL(
 			`${apiBaseUrl}/public/identitytoken?address=${accountAddress}&chainid=${chainId}`,
 		);
-		return this.ajaxUtils.get<IdentityToken | null>(requestUrl);
+		return this.ajaxUtils.get<MintedIdentityToken | null>(requestUrl);
 	}
 
 	public getRedirectUrl(linkId: CustomerLinkId): ResultAsync<URL, never> {

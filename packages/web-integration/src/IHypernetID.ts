@@ -1,6 +1,7 @@
 import {
 	CustomerLinkId,
 	IdentityToken,
+	MintedIdentityToken,
 } from "@hypernetlabs/hypernet-id-objects";
 import {
 	EthereumAccountAddress,
@@ -37,7 +38,7 @@ export interface IHypernetID {
 	getIdentityTokenForAccountOnChain(
 		accountAddress: EthereumAccountAddress,
 		chainId: ChainId,
-	): ResultAsync<IdentityToken | null, AjaxError>;
+	): ResultAsync<MintedIdentityToken | null, AjaxError>;
 
 	/**
 	 * Returns a URL object that will send the user through the Hypernet.ID flow.
