@@ -2,13 +2,17 @@ import {
 	UnixTimestamp,
 	CountryCode,
 	EthereumAccountAddress,
+	RegistryTokenId,
+	ChainId,
 } from "@hypernetlabs/objects";
 
-import { IdentityMetadata } from "@objects/IdentityMetadata";
+import { IdentityToken } from "@objects/IdentityToken";
 
-export class IdentityToken extends IdentityMetadata {
+export class MintedIdentityToken extends IdentityToken {
 	public constructor(
-		public ownerAddress: EthereumAccountAddress,
+		public tokenId: RegistryTokenId,
+		public chainId: ChainId,
+		ownerAddress: EthereumAccountAddress,
 		timestamp: UnixTimestamp,
 		countryCode: CountryCode,
 		email: boolean,
@@ -48,6 +52,7 @@ export class IdentityToken extends IdentityMetadata {
 		activeScreening: boolean,
 	) {
 		super(
+			ownerAddress,
 			timestamp,
 			countryCode,
 			email,
