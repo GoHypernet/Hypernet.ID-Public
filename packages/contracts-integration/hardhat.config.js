@@ -3,6 +3,11 @@ require("@nomiclabs/hardhat-waffle");
 require("hardhat-contract-sizer");
 require("hardhat-gas-reporter");
 
+const urlOverride = process.env.ETH_PROVIDER_URL;
+const mnemonic =
+  process.env.MNEMONIC ||
+  "test test test test test test test test test test test junk";
+
 // This is a sample Hardhat task. To learn how to create your own go to
 // https://hardhat.org/guides/create-task.html
 task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
@@ -11,28 +16,6 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
   for (const account of accounts) {
     console.log(account.address);
   }
-});
-
-task("string2bytes", "Convert a string to bytes")
-  .addParam("string", "String to convert to bytes")
-  .setAction(async (taskArgs) => {
-    const accounts = await hre.ethers.getSigners();
-    const string = taskArgs.string;
-
-    const inBytes = hre.ethers.utils.formatBytes32String(string);
-    console.log("Bytes:", inBytes)
-
-});
-
-task("bytes2string", "Convert some bytes to utf8 string")
-  .addParam("bytes", "bytes-like string")
-  .setAction(async (taskArgs) => {
-    const accounts = await hre.ethers.getSigners();
-    const bytes = taskArgs.bytes;
-
-    const string = hre.ethers.utils.toUtf8Bytes(bytes);
-    console.log("String:", string.toString())
-
 });
 
 // You need to export an object to set up your config
@@ -51,9 +34,36 @@ module.exports = {
 		  },
 		},
 	  },
-  contractSizer: {
-    alphaSort: true,
-    runOnCompile: true,
-    disambiguatePaths: false,
-  },
+    networks: {
+		dev: {
+			accounts: {
+			  accountsBalance: "10000000000000000000000",
+			  mnemonic,
+			},
+			chainId: 31337,
+			url: 'http://127.0.0.1:8569'
+		  },
+		rinkeby: { // ethereum tesnet
+			accounts: { mnemonic },
+			chainId: 4,
+			url: urlOverride || "http://localhost:8545",
+		  },
+		mumbai: { // polygon testnet
+			  accounts: { mnemonic },
+			  chainId: 80001,
+			  url: urlOverride || "https://rpc-mumbai.maticvigil.com",
+			  gas: 6000000,
+			  gasPrice: 8000000000
+		  },
+		fuji: { // avalanche testnet
+			  accounts: { mnemonic },
+			  chainId: 43113,
+			  url: urlOverride || "https://api.avax-test.network/ext/bc/C/rpc",
+		  },
+	  },
+    contractSizer: {
+      alphaSort: true,
+      runOnCompile: true,
+      disambiguatePaths: false,
+    },
 };

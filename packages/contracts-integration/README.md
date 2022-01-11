@@ -14,13 +14,19 @@ actually written to the blockchain. See the full [NFT specification](/packages/d
 bit field is encoded as a UTF-8 string. The smart contract integration package handles conversion from UTF-8 to bits for you.
 
 ## Hypernet.ID Registry Chain Addresses
-Currently, the Hypernet.ID smart contract registries are only deployed to the Rinkeby Testnet. Therefor, only smart contracts
-on that network can directly query a user's verification status. As Hypernet.ID deploys to other 
+Currently, the Hypernet.ID smart contract registries are only deployed to testnet environments. Therefor, only smart contracts
+on these networks can directly query a user's verification status. As Hypernet.ID deploys to other 
 [EVM-compatible](https://ethereum.org/en/developers/docs/evm/) blockchains, this section will list the offical contract 
 addresses that Hypernet.ID administers. 
 
 ### Rinkeby (chainid: 4)
 [`0x8E92D1D990E36e00Af533db811Fc5C342823C817`](https://rinkeby.etherscan.io/address/0x8E92D1D990E36e00Af533db811Fc5C342823C817)
+
+### Mumbai (chainid: 80001)
+[`0x398c52D8599B78bB1CeAe56532DDBf683433EC3f`](https://mumbai.polygonscan.com/address/0x398c52D8599B78bB1CeAe56532DDBf683433EC3f)
+
+### Fuji (chainid: 43113)
+[`0x70f622E02b96c498c6266eA6C96327160A21263b`](https://testnet.avascan.info/blockchain/c/address/0x70f622E02b96c498c6266eA6C96327160A21263b)
 
 ## Installation
 Hypernet.ID publishes a helper contract, 
