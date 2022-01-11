@@ -1,0 +1,43 @@
+import { CountryCode, UnixTimestamp } from "@hypernetlabs/objects";
+
+export class IdentityMetadata {
+	public constructor(
+		public timestamp: UnixTimestamp,
+		public countryCode: CountryCode,
+		public email: boolean,
+		public firstName: boolean,
+		public lastName: boolean,
+		public birthday: boolean,
+		public placeOfBirth: boolean,
+		public mailingAddress: boolean,
+		public residenceAddress: boolean,
+		public passport: boolean,
+		public drivingLicense: boolean,
+		public visa: boolean,
+		public nationalId: boolean,
+		public consularId: boolean,
+		public electoralId: boolean,
+		public residentPermitId: boolean,
+		public taxId: boolean,
+		public studentId: boolean,
+		public passportCard: boolean,
+		public militaryId: boolean,
+		public publicSafetyId: boolean,
+		public healthId: boolean,
+		public taxEssentials: boolean,
+		public socialSecurityNumber: boolean,
+		public taxNumber: boolean,
+		public naturalPersonsRegister: boolean, // CPF
+		public generalRegistrationNumber: boolean,
+		public voterIdNumber: boolean,
+		public issuingNumber: boolean,
+		public gender: boolean,
+		public nationality: boolean,
+		public livenessImage: boolean,
+		public motherName: boolean,
+		public fatherName: boolean,
+		public verifiedInvestor: boolean,
+		public underSanctions: boolean,
+		public activeScreening: boolean,
+	) {}
+}
