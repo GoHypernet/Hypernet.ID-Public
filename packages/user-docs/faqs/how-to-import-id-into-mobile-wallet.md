@@ -12,3 +12,5 @@ the address of the NFT contract and your unique token ID.
 3. Select the NFT subtab for the account and then click "import NFTs"
 4. Paste the [contract address](/packages/contracts-integration/README.md#hypernet.id-registry-chain-addresses) for the network your wallet is configured for into the field called "Address".
 5. Paste the token ID of your Hypernet.ID into the field called "ID". 
+
+![Metamask Mobile NFT import](/packages/user-docs/assets/nft-import.gif)
