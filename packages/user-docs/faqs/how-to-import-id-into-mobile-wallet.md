@@ -1,4 +1,4 @@
-# How do I view my Hypernet.ID in my Mobile Wallet?
+# How do I view my Hypernet.ID in my mobile wallet?
 
 Some mobile wallets automatically detect when your account recieves an NFT asset (they do this by 
 listing for blockchain [events](https://ethereum.org/lt/developers/docs/smart-contracts/anatomy/#events-and-logs) 

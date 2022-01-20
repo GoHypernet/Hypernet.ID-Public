@@ -31,4 +31,4 @@
       * [I no longer want my account address linked to my identity through Hypernet.ID. What do I do?](packages/user-docs/faqs/i-no-longer-want-my-account-address-linked-to-my-identity-through-hypernet.id.-what-do-i-do.md)
       * [What happens if my ID gets declined?](packages/user-docs/faqs/what-happens-if-my-id-gets-declined.md)
       * [Where can I find the Privacy Policy?](packages/user-docs/faqs/where-can-i-find-the-privacy-policy.md)
-      * [How do I view my Hypernet.ID in my Mobile Wallet?](packages/user-docs/faqs/how-to-import-id-into-mobile-wallet.md)
+      * [How do I view my Hypernet.ID in my mobile wallet?](packages/user-docs/faqs/how-to-import-id-into-mobile-wallet.md)
