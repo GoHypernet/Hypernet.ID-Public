@@ -17,8 +17,12 @@ describe("Check Modifiers", function () {
         idregistry = await IDRegistry.deploy();
         await idregistry.deployTransaction.wait();
 
+		let tx = await idregistry.setBaseURI(
+			"ipfs://QmeztCtCmeDg2jj2wcSKa9nwKdqLsSkZq3zfVMG84pocf6?");
+		await tx.wait();
+
         // mint token to owner account with proper criteria
-        let tx = await idregistry.safeMint(
+        tx = await idregistry.safeMint(
             owner.address,
             ownerid,
             "00000020000000030000000061b2833c");

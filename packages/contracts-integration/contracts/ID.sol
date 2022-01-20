@@ -49,7 +49,7 @@ contract ID is Context {
     virtual
     returns (bool) {
 		bytes8 target = _fromTokenURIToBytes8(
-			INfr(registryAddress).tokenURI(
+			INfr(registryAddress).tokenURINoBase(
 			        INfr(registryAddress).tokenOfOwnerByIndex(owner, 0)
 			    )
 			);
@@ -63,7 +63,7 @@ contract ID is Context {
     returns (bool) {
 		require(INfr(registryAddress).ownerOf(tokenid) == owner, "ID: msgsender not owner of tokenID");
 		bytes8 target = _fromTokenURIToBytes8(
-		        INfr(registryAddress).tokenURI(tokenid)
+		        INfr(registryAddress).tokenURINoBase(tokenid)
 			);
 		return ((target & CRITERIA) == CRITERIA);
     }
@@ -130,4 +130,6 @@ interface INfr {
      * @dev See {IERC721Metadata-tokenURI}.
      */
     function tokenURI(uint256 tokenId) external view returns (string memory);
+
+	function tokenURINoBase(uint256 tokenId) external view returns (string memory);
 }
