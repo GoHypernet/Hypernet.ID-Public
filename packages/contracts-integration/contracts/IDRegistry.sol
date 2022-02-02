@@ -6,6 +6,9 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+/// @dev this contract is for local testing and demonstraction purposes only
+/// Hypernet.ID registry addresses can be found at:
+/// https://docs.hypernet.id/developer-documentation/developer-docs/contracts-integration#hypernet.id-registry-chain-addresses
 contract IDRegistry is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
 
 	string public baseURI;
