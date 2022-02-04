@@ -23,14 +23,12 @@ addresses that Hypernet.ID administers.
 [`0x8E92D1D990E36e00Af533db811Fc5C342823C817`](https://rinkeby.etherscan.io/address/0x8E92D1D990E36e00Af533db811Fc5C342823C817)
 
 ### Polygon Mainnet (chainid: 137)
-
 [`0x267F7bE23760743f0e415A28f56dA5129EA11AA9`](https://polygonscan.com/address/0x267F7bE23760743f0e415A28f56dA5129EA11AA9)
 
 ### Mumbai (chainid: 80001)
 [`0x398c52D8599B78bB1CeAe56532DDBf683433EC3f`](https://mumbai.polygonscan.com/address/0x398c52D8599B78bB1CeAe56532DDBf683433EC3f)
 
 ### Avalanche Mainnet (chainid: 43114)
-
 [`0x70f622E02b96c498c6266eA6C96327160A21263b`](https://snowtrace.io/address/0x70f622E02b96c498c6266eA6C96327160A21263b)
 
 ### Fuji (chainid: 43113)
