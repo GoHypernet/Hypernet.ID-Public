@@ -43,6 +43,6 @@ export class HypernetID implements IHypernetID {
 	}
 
 	public getRedirectUrl(linkId: CustomerLinkId): ResultAsync<URL, never> {
-		return okAsync(new URL(`${appBaseUrl}/?campaignid=${linkId}`));
+		return okAsync(new URL(`${appBaseUrl}/?referralLinkId=${linkId}`));
 	}
 }
