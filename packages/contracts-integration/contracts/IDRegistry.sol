@@ -6,8 +6,21 @@ import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Enumerable.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721URIStorage.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 
+/// @dev this contract is for local testing and demonstraction purposes only
+/// Hypernet.ID registry addresses can be found at:
+/// https://docs.hypernet.id/developer-documentation/developer-docs/contracts-integration#hypernet.id-registry-chain-addresses
 contract IDRegistry is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
+
+	string public baseURI;
+
     constructor() ERC721("IDRegistry", "IDs") {}
+
+	function setBaseURI(string memory _baseURI)
+        public
+        onlyOwner
+    {
+        baseURI = _baseURI;
+    }
 
     function safeMint(address to, uint256 tokenId, string memory uri)
         public
@@ -37,6 +50,34 @@ contract IDRegistry is ERC721, ERC721Enumerable, ERC721URIStorage, Ownable {
         returns (string memory)
     {
         return super.tokenURI(tokenId);
+    }
+
+	function tokenURINoBase(
+        uint256 tokenId
+    )
+        external
+        view
+        virtual
+        returns (string memory)
+    {
+        bytes memory basebytes = bytes(baseURI);
+
+        if (basebytes.length == 0) {
+            // if there is no baseURI, return the full tokenURI
+            return ERC721URIStorage.tokenURI(tokenId);
+        } else {
+            // if there is a baseURI, strip it from the tokenURI
+            bytes memory uribytes = bytes(ERC721URIStorage.tokenURI(tokenId));
+            bytes memory uri = new bytes(uribytes.length-basebytes.length);
+            for (uint i = 0; i<uribytes.length-basebytes.length; ++i) {
+                uri[i] = uribytes[i+basebytes.length];
+            }
+            return string(uri);
+        }
+    }
+
+	function _baseURI() internal view virtual override returns (string memory) {
+        return baseURI;
     }
 
     function supportsInterface(bytes4 interfaceId)
