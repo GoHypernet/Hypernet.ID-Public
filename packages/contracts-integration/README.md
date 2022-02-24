@@ -14,7 +14,7 @@ actually written to the blockchain. See the full [NFT specification](/packages/d
 bit field is encoded as a UTF-8 string. The smart contract integration package handles conversion from UTF-8 to bits for you.
 
 ## Hypernet.ID Registry Chain Addresses
-Currently, the Hypernet.ID smart contract registries are only deployed to testnet environments. Therefor, only smart contracts
+Currently, the Hypernet.ID smart contract registries are only deployed to testnet environments. Therefore, only smart contracts
 on these networks can directly query a user's verification status. As Hypernet.ID deploys to other 
 [EVM-compatible](https://ethereum.org/en/developers/docs/evm/) blockchains, this section will list the offical contract 
 addresses that Hypernet.ID administers. 
