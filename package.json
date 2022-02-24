@@ -80,7 +80,7 @@
     "metro-react-native-babel-preset": "^0.59.0",
     "moleculer-repl": "^0.6.2",
     "monaco-editor-webpack-plugin": "2.0.0",
-    "node-sass": "4.13.0",
+    "node-sass": "7.0.0",
     "os-browserify": "^0.3.0",
     "postcss": "^8.2.4",
     "postcss-loader": "^4.2.0",
