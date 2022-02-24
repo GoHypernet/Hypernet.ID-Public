@@ -1,6 +1,6 @@
 # Hypernet.ID NFT Specification
 
-## High Level Bit Allocation
+## High Level ID Verification Encoding Schema
 
 Each Hypernet.ID NFT encodes the presence of PII, country code, and verification time stamp in the `tokenURI` field as follows:
 
@@ -15,6 +15,11 @@ tokenURI ->
 ```
 
 Be aware that the `tokenURI` field is a UTF-8 string, therefor this bit field is encoded as such before being written to the blockchain. 
+Therefore, once you have decided on the fields you require for interaction with your protocol, you should encode them as a UTF-8 string 
+and use the 
+[`_fromTokenURIToBytes8`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L85) 
+function to set the [`CRITERIA`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L10) 
+variable. Check out the [contract integration](/packages/contracts-integration/README.md#usage) documentation for more details.
 
 ## PII Bit Field Allocation
 

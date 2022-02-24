@@ -57,7 +57,8 @@ decorated with one of the following modifiers defined in `ID.sol`.
 You can see a simple yet complete example of how to use `ID.sol` 
 [here](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/Test.sol). In order to gate on specific
 id verification criteria, you must set the [`CRITERIA`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L10) 
-variable appropriately. An example of how to do this can be seen in the [constructor of `Test.sol`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/Test.sol#L15). 
+variable appropriately. You can find the fields that are encoded into each Hypernet.ID NFT [here](/packages/developer-docs/token-specification.md). 
+An example of how to do this can be seen in the [constructor of `Test.sol`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/Test.sol#L15). 
 Additionally, since Hypernet.ID maintains id registries on multiple chains, you must be sure to set the 
 [`registryAddress`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol#L9) 
 variable to the requisite address for your target network (i.e. Rinkeby, Mainnet, Avalanche, Polygon, etc.). 
