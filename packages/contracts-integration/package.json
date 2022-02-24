@@ -1,7 +1,7 @@
 {
   "name": "@hypernetlabs/hypernet-id-contracts-integration",
   "description": "A minimalist smart contract library for on-chain identity verification.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "files": [
     "contracts/ID.sol"
   ],
