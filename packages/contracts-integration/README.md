@@ -46,6 +46,12 @@ Hypernet.ID's helper contracts in your project run:
 npm install --sav-dev @hypernetlabs/hypernet-id-contracts-integration
 ```
 
+Then import `ID.sol` into your smart contract like this:
+
+```
+import "@hypernetlabs/hypernet-id-contracts-integration/contracts/ID.sol";
+```
+
 ## Usage
 Protecting your smart contract's external and public functions from unverified accounts simply requries that they be 
 decorated with one of the following modifiers defined in `ID.sol`.
