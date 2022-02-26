@@ -1,5 +1,5 @@
 import {
-	CustomerLinkId,
+	ReferralLinkId,
 	IdentityToken,
 	MintedIdentityToken,
 } from "@hypernetlabs/hypernet-id-objects";
@@ -50,5 +50,5 @@ export interface IHypernetID {
 	 * @param linkId Also called the Campaign ID.
 	 * @returns a URL object with the redirect URL for your link.
 	 */
-	getRedirectUrl(linkId: CustomerLinkId): ResultAsync<URL, never>;
+	getRedirectUrl(linkId: ReferralLinkId): ResultAsync<URL, never>;
 }

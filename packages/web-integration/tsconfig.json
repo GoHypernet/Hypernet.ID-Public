@@ -5,7 +5,11 @@
 		"rootDir": "./src",
 		"baseUrl": "./src/"
 	},
-	"references": [],
+	"references": [
+		{
+			"path": "../objects"
+		},
+	],
 	"include": ["./src/**/*.ts"],
 	"exclude": ["node_modules"]
 }
