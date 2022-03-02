@@ -41,7 +41,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@hypernetlabs/objects": "^0.3.12",
+    "@hypernetlabs/objects": "^0.3.19",
     "neverthrow": "^4.3.1",
     "ts-brand": "^0.0.2"
   }
