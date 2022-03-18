@@ -22,6 +22,9 @@ on these networks can directly query a user's verification status. As Hypernet.I
 [EVM-compatible](https://ethereum.org/en/developers/docs/evm/) blockchains, this section will list the offical contract 
 addresses that Hypernet.ID administers. 
 
+### Ethereum Mainnet (chainid: 1)
+['0x398c52D8599B78bB1CeAe56532DDBf683433EC3f'](https://etherscan.io/address/0x398c52D8599B78bB1CeAe56532DDBf683433EC3f)
+
 ### Rinkeby (chainid: 4)
 [`0x8E92D1D990E36e00Af533db811Fc5C342823C817`](https://rinkeby.etherscan.io/address/0x8E92D1D990E36e00Af533db811Fc5C342823C817)
 
