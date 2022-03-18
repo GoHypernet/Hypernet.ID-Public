@@ -1,5 +1,5 @@
 import {
-	CustomerLinkId,
+	ReferralLinkId,
 	IdentityToken,
 	MintedIdentityToken,
 } from "@hypernetlabs/hypernet-id-objects";
@@ -26,9 +26,7 @@ export class HypernetID implements IHypernetID {
 	public getIdentityTokenForAccount(
 		accountAddress: EthereumAccountAddress,
 	): ResultAsync<IdentityToken, AjaxError> {
-		const requestUrl = new URL(
-			`${apiBaseUrl}/public/identitytoken?address=${accountAddress}`,
-		);
+		const requestUrl = new URL(`${apiBaseUrl}/address/${accountAddress}`);
 		return this.ajaxUtils.get<IdentityToken>(requestUrl);
 	}
 
@@ -37,12 +35,18 @@ export class HypernetID implements IHypernetID {
 		chainId: ChainId,
 	): ResultAsync<MintedIdentityToken | null, AjaxError> {
 		const requestUrl = new URL(
-			`${apiBaseUrl}/public/identitytoken?address=${accountAddress}&chainid=${chainId}`,
+			`${apiBaseUrl}/address/${accountAddress}/chain/${chainId}`,
 		);
-		return this.ajaxUtils.get<MintedIdentityToken | null>(requestUrl);
+		return this.ajaxUtils
+			.get<{
+				mintedIdentityToken: MintedIdentityToken | null;
+			}>(requestUrl)
+			.map((result) => {
+				return result.mintedIdentityToken;
+			});
 	}
 
-	public getRedirectUrl(linkId: CustomerLinkId): ResultAsync<URL, never> {
+	public getRedirectUrl(linkId: ReferralLinkId): ResultAsync<URL, never> {
 		return okAsync(new URL(`${appBaseUrl}/?referralLinkId=${linkId}`));
 	}
 }

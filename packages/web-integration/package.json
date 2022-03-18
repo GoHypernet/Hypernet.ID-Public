@@ -1,6 +1,6 @@
 {
   "name": "@hypernetlabs/hypernet-id-web-integration",
-  "version": "0.0.2",
+  "version": "0.0.4",
   "description": "Web integration package for Hypernet.ID. Provides basic access to user identity status and facilitates onboarding workflows.",
   "license": "ISC",
   "repository": {
@@ -41,9 +41,9 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@hypernetlabs/hypernet-id-objects": "^0.0.2",
-    "@hypernetlabs/objects": "^0.3.12",
-    "@hypernetlabs/utils": "^0.4.6",
+    "@hypernetlabs/hypernet-id-objects": "^0.0.4",
+    "@hypernetlabs/objects": "^0.3.19",
+    "@hypernetlabs/utils": "^0.5.2",
     "inversify": "^6.0.1",
     "neverthrow": "^4.3.1"
   }
