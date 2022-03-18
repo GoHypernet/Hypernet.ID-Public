@@ -34,6 +34,9 @@ addresses that Hypernet.ID administers.
 ### Fuji (chainid: 43113)
 [`0x70f622E02b96c498c6266eA6C96327160A21263b`](https://testnet.avascan.info/blockchain/c/address/0x70f622E02b96c498c6266eA6C96327160A21263b)
 
+### Fantom Mainnet (chainid: 250)
+[`0x70f622E02b96c498c6266eA6C96327160A21263b`](https://ftmscan.com/address/0x70f622E02b96c498c6266eA6C96327160A21263b)
+
 ## Installation
 Hypernet.ID publishes a helper contract, 
 [`ID.sol`](https://github.com/GoHypernet/Hypernet.ID-Public/blob/develop/packages/contracts-integration/contracts/ID.sol), 
