@@ -1,2 +1,1 @@
-// TODO: Update apiBaseUrl
-export const apiBaseUrl = "https://public.api.hypernet.id/v0";
+export const apiBaseUrl = "https://corporate.api.hypernet.id";

@@ -12,18 +12,16 @@ import {
 	NFTMetadata,
 } from "@corporate-integration/IHypernetCorporateIntegration";
 
-import { injectable } from "inversify";
 import { okAsync, ResultAsync } from "neverthrow";
 import { Readable } from "stream";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 
-@injectable()
 export class HypernetCorporateIntegration
 	implements IHypernetCorporateIntegration
 {
 	protected ajaxUtils: IAjaxUtils;
-	protected token: string | null = null;
-	protected tokenExpiration: number | undefined;
+	protected token: JsonWebToken | null = null;
+	protected tokenExpiration: number = 0;
 
 	constructor(
 		protected corporateId: UUID,
@@ -75,12 +73,7 @@ export class HypernetCorporateIntegration
 	}
 
 	protected setCorporateAuthenticationToken(): ResultAsync<void, AjaxError> {
-		if (
-			this.token == null ||
-			(this.token != null &&
-				(this.tokenExpiration == null ||
-					this.tokenExpiration < Date.now()))
-		) {
+		if (this.getTokenRequired()) {
 			const requestUrl = new URL(`${apiBaseUrl}/token`);
 
 			return this.ajaxUtils
@@ -91,13 +84,10 @@ export class HypernetCorporateIntegration
 					corporateSecret: this.corporateSecret,
 				})
 				.map((result) => {
-					const token = result.token;
-					const decoded = jwt_decode<JwtPayload>(token);
-
-					this.tokenExpiration = decoded.exp;
-					this.token = token;
-
-					this.ajaxUtils.setDefaultToken(token);
+					this.token = result.token;
+					const decoded = jwt_decode<JwtPayload>(this.token);
+					this.tokenExpiration = decoded.exp as number;
+					this.ajaxUtils.setDefaultToken(this.token);
 				});
 		}
 
@@ -140,5 +130,13 @@ export class HypernetCorporateIntegration
 				},
 			})
 			.map(() => {});
+	}
+
+	protected getTokenRequired() {
+		// tokenExpiration - 10 Minutes < Now
+		return (
+			this.token == null ||
+			(this.token != null && this.tokenExpiration - 600000 < Date.now())
+		);
 	}
 }
