@@ -24,6 +24,7 @@
 		"composite": true,
 		"paths": {
 			"@objects/*": ["./*"],
+			"@corporate-integration/*": ["./*"],
 			"@web-integration/*": ["./*"]
 		}
 	}

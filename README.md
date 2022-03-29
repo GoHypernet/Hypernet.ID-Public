@@ -15,6 +15,9 @@ A solidity library for protecting external and public functions defined in smart
 ### [Developer Documentation](/packages/developer-docs)
 Subpackage thats serves as the starting point for Gitbook hosted developer documentation.
 
+### [Corporate Integration](/packages/corporate-integration)
+Subpackage with typescript utilities for easy integration for corporates of Hypernet.Mint in web-based applications.
+
 ### [Web Integration](/packages/web-integration)
 Subpackage with typescript utilities for easy integration with Hypernet.ID in web-based applications.
 

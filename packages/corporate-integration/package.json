@@ -1,0 +1,49 @@
+{
+  "name": "@hypernetlabs/hypernet-id-corporate-integration",
+  "version": "0.0.1",
+  "description": "Corporate integration package for Hypernet.ID.",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GoHypernet/Hypernet.ID-Public.git"
+  },
+  "bugs": {
+    "url": "https://github.com/GoHypernet/Hypernet.ID-Public/issues"
+  },
+  "homepage": "https://github.com/GoHypernet/Hypernet.ID-Public/tree/master/packages/core#readme",
+  "author": "Onur Kenis <onur@hypernetlabs.io>",
+  "keywords": [
+    "Hypernet Labs",
+    "Hypernet.ID"
+  ],
+  "main": "lib/index.js",
+  "files": [
+    "lib",
+    "!lib/test",
+    "!lib/tsconfig.tsbuildinfo"
+  ],
+  "scripts": {
+    "alias": "tsc-alias",
+    "build": "yarn clean && yarn compile",
+    "clean": "rimraf dist tsconfig.tsbuildinfo",
+    "compile": "tsc --build && cd ../.. && yarn alias",
+    "format": "eslint --fix 'src/**/*.ts' && yarn format:pkg",
+    "format:pkg": "format-package -w",
+    "prepare": "yarn build",
+    "prepublishOnly": "yarn test && yarn format",
+    "test": "yarn test:ci",
+    "test:ci": "jest --runInBand --coverage --passWithNoTests",
+    "test:watch": "jest --watch --color --detectOpenHandles",
+    "preversion": "yarn format",
+    "version": "yarn format && git add -A src",
+    "postversion": "git push && git push --tags"
+  },
+  "types": "lib/index.d.ts",
+  "dependencies": {
+    "@hypernetlabs/hypernet-id-objects": "^0.0.4",
+    "@hypernetlabs/objects": "^0.3.19",
+    "@hypernetlabs/utils": "^0.5.3",
+    "jwt-decode": "^3.1.2",
+    "neverthrow": "^4.3.1"
+  }
+}
