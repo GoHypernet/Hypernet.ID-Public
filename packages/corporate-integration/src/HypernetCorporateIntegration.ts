@@ -1,3 +1,5 @@
+import { Readable } from "stream";
+
 import {
 	UUID,
 	AjaxError,
@@ -6,22 +8,21 @@ import {
 	EthereumAccountAddress,
 } from "@hypernetlabs/objects";
 import { IAjaxUtils, AxiosAjaxUtils } from "@hypernetlabs/utils";
+import jwt_decode, { JwtPayload } from "jwt-decode";
+import { okAsync, ResultAsync } from "neverthrow";
+
 import { apiBaseUrl } from "@corporate-integration/configuration";
 import {
 	IHypernetCorporateIntegration,
 	NFTMetadata,
 } from "@corporate-integration/IHypernetCorporateIntegration";
 
-import { okAsync, ResultAsync } from "neverthrow";
-import { Readable } from "stream";
-import jwt_decode, { JwtPayload } from "jwt-decode";
-
 export class HypernetCorporateIntegration
 	implements IHypernetCorporateIntegration
 {
 	protected ajaxUtils: IAjaxUtils;
 	protected token: JsonWebToken | null = null;
-	protected tokenExpiration: number = 0;
+	protected tokenExpiration = 0;
 
 	constructor(
 		protected corporateId: UUID,
