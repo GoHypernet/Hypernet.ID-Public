@@ -1551,6 +1551,20 @@
     pino "^6.7.0"
     postmate "^1.5.2"
 
+"@hypernetlabs/utils@^0.5.3":
+  version "0.5.3"
+  resolved "https://registry.yarnpkg.com/@hypernetlabs/utils/-/utils-0.5.3.tgz#cbc57b653abc485f7f3e1986d8bcf756d58262fb"
+  integrity sha512-FQoa6+NFYcmCUE/7ZNBgO2IZIjHsjriI7s67iHcqQJkk6BW/DN5rBowKCP+KAg1HWCASq7yupgte88y0WfGYzA==
+  dependencies:
+    "@connext/vector-utils" "^0.2.5-beta.6"
+    "@hypernetlabs/objects" "^0.3.19"
+    axios "^0.21.1"
+    delay "^5.0.0"
+    inversify "^5.1.1"
+    neverthrow "^4.2.2"
+    pino "^6.7.0"
+    postmate "^1.5.2"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
