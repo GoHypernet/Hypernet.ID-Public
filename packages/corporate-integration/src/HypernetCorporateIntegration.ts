@@ -14,6 +14,7 @@ import { okAsync, ResultAsync } from "neverthrow";
 import { apiBaseUrl } from "@corporate-integration/configuration";
 import {
 	IHypernetCorporateIntegration,
+	IHypernetCorporateIntegrationConfig,
 	NFTMetadata,
 } from "@corporate-integration/IHypernetCorporateIntegration";
 
@@ -21,14 +22,20 @@ export class HypernetCorporateIntegration
 	implements IHypernetCorporateIntegration
 {
 	protected ajaxUtils: IAjaxUtils;
+	protected apiBaseUrl = apiBaseUrl;
 	protected token: JsonWebToken | null = null;
 	protected tokenExpiration = 0;
 
 	constructor(
 		protected corporateId: UUID,
 		protected corporateSecret: string,
+		protected config?: IHypernetCorporateIntegrationConfig,
 	) {
 		this.ajaxUtils = new AxiosAjaxUtils();
+
+		if (config?.apiBaseUrl != null) {
+			this.apiBaseUrl = config.apiBaseUrl;
+		}
 	}
 
 	public uploadFileToCollection(
@@ -51,12 +58,12 @@ export class HypernetCorporateIntegration
 		identityId: UUID | null,
 		emailAddress: EmailAddressString | null,
 		accountAddress: EthereumAccountAddress | null,
-		imageFileame: string | null,
-		animationFilename: string | null,
+		imageFileName: string | null,
+		animationFileName: string | null,
 	): ResultAsync<UUID, AjaxError> {
 		return this.setCorporateAuthenticationToken().andThen(() => {
 			const requestUrl = new URL(
-				`${apiBaseUrl}/collections/${collectionId}/nfts`,
+				`${this.apiBaseUrl}/collections/${collectionId}/nfts`,
 			);
 			return this.ajaxUtils
 				.post<{ nftId: UUID }>(requestUrl, {
@@ -64,8 +71,8 @@ export class HypernetCorporateIntegration
 					identityId,
 					emailAddress,
 					accountAddress,
-					imageFileame,
-					animationFilename,
+					imageFileName,
+					animationFileName,
 				})
 				.map((result) => {
 					return result.nftId;
@@ -75,7 +82,7 @@ export class HypernetCorporateIntegration
 
 	protected setCorporateAuthenticationToken(): ResultAsync<void, AjaxError> {
 		if (this.getTokenRequired()) {
-			const requestUrl = new URL(`${apiBaseUrl}/token`);
+			const requestUrl = new URL(`${this.apiBaseUrl}/token`);
 
 			return this.ajaxUtils
 				.post<{
@@ -100,7 +107,7 @@ export class HypernetCorporateIntegration
 		fileName: string,
 	): ResultAsync<string, AjaxError> {
 		const requestUrl = new URL(
-			`${apiBaseUrl}/collections/${collectionId}/files/upload?fileName=${fileName}`,
+			`${this.apiBaseUrl}/collections/${collectionId}/files/upload?fileName=${fileName}`,
 		);
 
 		return this.ajaxUtils
