@@ -1,6 +1,6 @@
 {
   "name": "@hypernetlabs/hypernet-id-corporate-integration",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Corporate integration package for Hypernet.ID.",
   "license": "ISC",
   "repository": {
