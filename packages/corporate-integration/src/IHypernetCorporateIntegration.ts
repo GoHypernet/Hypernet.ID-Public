@@ -10,6 +10,10 @@ export interface NFTMetadata {
 	[x: string]: string;
 }
 
+export interface IHypernetCorporateIntegrationConfig {
+	apiBaseUrl?: string;
+}
+
 export interface IHypernetCorporateIntegration {
 	/**
 	 * This method uploads a file to a collection.
@@ -26,7 +30,12 @@ export interface IHypernetCorporateIntegration {
 	/**
 	 * This method is used to create an NFT on a particular collection.
 	 * @param collectionId
-	 * @param nft
+	 * @param metadata
+	 * @param identityId
+	 * @param emailAddress
+	 * @param accountAddress
+	 * @param imageFileName
+	 * @param animationFileName
 	 * @returns NFT ID.
 	 */
 	createNFTInCollection(
@@ -35,7 +44,7 @@ export interface IHypernetCorporateIntegration {
 		identityId: UUID | null,
 		emailAddress: EmailAddressString | null,
 		accountAddress: EthereumAccountAddress | null,
-		imageFileame: string | null,
-		animationFilename: string | null,
+		imageFileName: string | null,
+		animationFileName: string | null,
 	): ResultAsync<UUID, AjaxError>;
 }
