@@ -1,1 +1,1 @@
-export const apiBaseUrl = "https://corporate.api.hypernet.id";
+export const defaultApiBaseUrl = "https://corporate.api.hypernet.id";

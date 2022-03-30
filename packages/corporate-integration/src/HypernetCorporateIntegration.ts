@@ -11,7 +11,7 @@ import { IAjaxUtils, AxiosAjaxUtils } from "@hypernetlabs/utils";
 import jwt_decode, { JwtPayload } from "jwt-decode";
 import { okAsync, ResultAsync } from "neverthrow";
 
-import { apiBaseUrl } from "@corporate-integration/configuration";
+import { defaultApiBaseUrl } from "@corporate-integration/configuration";
 import {
 	IHypernetCorporateIntegration,
 	IHypernetCorporateIntegrationConfig,
@@ -22,7 +22,7 @@ export class HypernetCorporateIntegration
 	implements IHypernetCorporateIntegration
 {
 	protected ajaxUtils: IAjaxUtils;
-	protected apiBaseUrl = apiBaseUrl;
+	protected apiBaseUrl = defaultApiBaseUrl;
 	protected token: JsonWebToken | null = null;
 	protected tokenExpiration = 0;
 
