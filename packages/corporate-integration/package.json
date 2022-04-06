@@ -1,6 +1,6 @@
 {
   "name": "@hypernetlabs/hypernet-id-corporate-integration",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Corporate integration package for Hypernet.ID.",
   "license": "ISC",
   "repository": {
@@ -40,9 +40,9 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@hypernetlabs/hypernet-id-objects": "^0.0.4",
-    "@hypernetlabs/objects": "^0.3.19",
-    "@hypernetlabs/utils": "^0.5.3",
+    "@hypernetlabs/hypernet-id-objects": "^0.0.5",
+    "@hypernetlabs/objects": "^0.3.20",
+    "@hypernetlabs/utils": "^0.5.4",
     "jwt-decode": "^3.1.2",
     "neverthrow": "^4.3.1"
   }

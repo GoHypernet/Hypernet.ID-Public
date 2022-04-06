@@ -1537,6 +1537,16 @@
     reflect-metadata "^0.1.13"
     ts-brand "^0.0.2"
 
+"@hypernetlabs/objects@^0.3.20":
+  version "0.3.20"
+  resolved "https://registry.yarnpkg.com/@hypernetlabs/objects/-/objects-0.3.20.tgz#4d172587c3a35255348adf37e061628f353607b4"
+  integrity sha512-CKXhYsXPnDp7uG/seyFlCZ3hRd6HOEZmTZsSF29P4LStIW6iIExyYYUjln9Zlo4MhzukXwNCAIa7YkeQizUnbg==
+  dependencies:
+    class-transformer "^0.3.2"
+    ethers "^5.4.7"
+    reflect-metadata "^0.1.13"
+    ts-brand "^0.0.2"
+
 "@hypernetlabs/utils@^0.5.2":
   version "0.5.2"
   resolved "https://registry.yarnpkg.com/@hypernetlabs/utils/-/utils-0.5.2.tgz#a27bf0db8ec2a6fd6f8734e5ed01e5f49206b6eb"

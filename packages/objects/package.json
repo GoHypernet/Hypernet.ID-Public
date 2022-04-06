@@ -1,6 +1,6 @@
 {
   "name": "@hypernetlabs/hypernet-id-objects",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Ojbects for Hypernet.ID",
   "license": "ISC",
   "repository": {
@@ -41,7 +41,7 @@
   },
   "types": "lib/index.d.ts",
   "dependencies": {
-    "@hypernetlabs/objects": "^0.3.19",
+    "@hypernetlabs/objects": "^0.3.20",
     "neverthrow": "^4.3.1",
     "ts-brand": "^0.0.2"
   }
