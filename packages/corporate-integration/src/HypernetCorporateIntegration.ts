@@ -1,5 +1,9 @@
-import { Readable } from "stream";
-
+import { defaultApiBaseUrl } from "@corporate-integration/configuration";
+import {
+	IHypernetCorporateIntegration,
+	IHypernetCorporateIntegrationConfig,
+	NFTMetadata,
+} from "@corporate-integration/IHypernetCorporateIntegration";
 import {
 	UUID,
 	AjaxError,
@@ -8,15 +12,9 @@ import {
 	EthereumAccountAddress,
 } from "@hypernetlabs/objects";
 import { IAjaxUtils, AxiosAjaxUtils } from "@hypernetlabs/utils";
-import jwt_decode, { JwtPayload } from "jwt-decode";
 import { okAsync, ResultAsync } from "neverthrow";
-
-import { defaultApiBaseUrl } from "@corporate-integration/configuration";
-import {
-	IHypernetCorporateIntegration,
-	IHypernetCorporateIntegrationConfig,
-	NFTMetadata,
-} from "@corporate-integration/IHypernetCorporateIntegration";
+import jwt_decode, { JwtPayload } from "jwt-decode";
+import { Readable } from "stream";
 
 export class HypernetCorporateIntegration
 	implements IHypernetCorporateIntegration

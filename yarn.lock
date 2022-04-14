@@ -1527,16 +1527,6 @@
   resolved "https://registry.yarnpkg.com/@hutson/parse-repository-url/-/parse-repository-url-3.0.2.tgz#98c23c950a3d9b6c8f0daed06da6c3af06981340"
   integrity sha512-H9XAx3hc0BQHY6l+IFSWHDySypcXsvsuLhgYLUGywmJ5pswRVQJUHpOsobnLYp2ZUaUlKiKDrgWWhosOwAEM8Q==
 
-"@hypernetlabs/objects@^0.3.15", "@hypernetlabs/objects@^0.3.19":
-  version "0.3.19"
-  resolved "https://registry.yarnpkg.com/@hypernetlabs/objects/-/objects-0.3.19.tgz#13811fd360a199bbc4f0e31fb18f98929cfbaa3e"
-  integrity sha512-cGUCjugksdxYEc2jB6m61ixDSUWT97jC9CB7B1hRp0kaF2Qy/30EvdsF8ZLO+yCFBWnL1A61HmJL/Z6Gq+4ilg==
-  dependencies:
-    class-transformer "^0.3.2"
-    ethers "^5.4.7"
-    reflect-metadata "^0.1.13"
-    ts-brand "^0.0.2"
-
 "@hypernetlabs/objects@^0.3.20":
   version "0.3.20"
   resolved "https://registry.yarnpkg.com/@hypernetlabs/objects/-/objects-0.3.20.tgz#4d172587c3a35255348adf37e061628f353607b4"
@@ -1547,27 +1537,13 @@
     reflect-metadata "^0.1.13"
     ts-brand "^0.0.2"
 
-"@hypernetlabs/utils@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@hypernetlabs/utils/-/utils-0.5.2.tgz#a27bf0db8ec2a6fd6f8734e5ed01e5f49206b6eb"
-  integrity sha512-O5cZVDDt2z+inck7sPL0762LYQnQhbIPVA1Epz7JBUExYlLr2DrtEEcRCgyu11+7ZmrUBwNXBQu/vBCbn4omhA==
+"@hypernetlabs/utils@^0.5.4":
+  version "0.5.4"
+  resolved "https://registry.yarnpkg.com/@hypernetlabs/utils/-/utils-0.5.4.tgz#c8f1f25e6effd8dbe6fc8db8d70d2d57e1e34dd5"
+  integrity sha512-ruP5G5b95jbXLLL8hy9xyaCI9ukWQB5r6sHoeaJtpZJuXi1Vj1kySh/F6nWXXs8C+UUDpedfoTei2Xiz62wfxw==
   dependencies:
     "@connext/vector-utils" "^0.2.5-beta.6"
-    "@hypernetlabs/objects" "^0.3.15"
-    axios "^0.21.1"
-    delay "^5.0.0"
-    inversify "^5.1.1"
-    neverthrow "^4.2.2"
-    pino "^6.7.0"
-    postmate "^1.5.2"
-
-"@hypernetlabs/utils@^0.5.3":
-  version "0.5.3"
-  resolved "https://registry.yarnpkg.com/@hypernetlabs/utils/-/utils-0.5.3.tgz#cbc57b653abc485f7f3e1986d8bcf756d58262fb"
-  integrity sha512-FQoa6+NFYcmCUE/7ZNBgO2IZIjHsjriI7s67iHcqQJkk6BW/DN5rBowKCP+KAg1HWCASq7yupgte88y0WfGYzA==
-  dependencies:
-    "@connext/vector-utils" "^0.2.5-beta.6"
-    "@hypernetlabs/objects" "^0.3.19"
+    "@hypernetlabs/objects" "^0.3.20"
     axios "^0.21.1"
     delay "^5.0.0"
     inversify "^5.1.1"
