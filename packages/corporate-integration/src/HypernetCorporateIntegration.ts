@@ -85,14 +85,12 @@ export class HypernetCorporateIntegration
 			const requestUrl = new URL(`${this.apiBaseUrl}/token`);
 
 			return this.ajaxUtils
-				.post<{
-					token: JsonWebToken;
-				}>(requestUrl, {
+				.post<JsonWebToken>(requestUrl, {
 					corporateId: this.corporateId,
 					corporateSecret: this.corporateSecret,
 				})
-				.map((result) => {
-					this.token = result.token;
+				.map((token) => {
+					this.token = token;
 					const decoded = jwt_decode<JwtPayload>(this.token);
 					this.tokenExpiration = decoded.exp as number;
 					this.ajaxUtils.setDefaultToken(this.token);
@@ -107,19 +105,10 @@ export class HypernetCorporateIntegration
 		fileName: string,
 	): ResultAsync<string, AjaxError> {
 		const requestUrl = new URL(
-			`${this.apiBaseUrl}/collections/${collectionId}/files/upload?fileName=${fileName}`,
+			`${this.apiBaseUrl}/collections/${collectionId}/files/upload?filename=${fileName}`,
 		);
 
-		return this.ajaxUtils
-			.post<{
-				uploadUrl: string;
-			}>(requestUrl, {
-				fileName,
-				collectionId,
-			})
-			.map((result) => {
-				return result.uploadUrl;
-			});
+		return this.ajaxUtils.get<string>(requestUrl);
 	}
 
 	protected uploadFileToBucket(
