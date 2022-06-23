@@ -2,7 +2,7 @@
 
 ## High Level ID Verification Encoding Schema
 
-Each Hypernet.ID NFT encodes the presence of PII, country code, and verification time stamp in the `tokenURI` field as follows:
+Each Hypernet.ID NFT encodes the presence of PII, [country code](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes), and verification time stamp in the `tokenURI` field as follows:
 
 ```
 tokenURI ->
