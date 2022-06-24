@@ -30,7 +30,7 @@ The bit-level layout for the 64 PII booleans is as follows:
 * Bit 3: Last Name
 * Bit 4: Date of Birth
 * Bit 5: Place Of Birth
-* Bit 6: Address (mailing)
+* Bit 6: Address (mailing) [Not Supported]
 * Bit 7: Address (residence)
 * Bit 8: Passport
 * Bit 9: Driving License
